@@ -1,0 +1,17 @@
+Contacts API Documentation
+=========================
+
+Core Authentication
+------------------
+.. automodule:: src.core.auth
+   :members:
+
+User CRUD Operations
+-------------------
+.. automodule:: src.crud.user
+   :members:
+
+Contact CRUD Operations
+----------------------
+.. automodule:: src.crud.contact
+   :members:

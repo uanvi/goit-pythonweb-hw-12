@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts API Documentation &mdash; Contacts API 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Contacts API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Contacts API Documentation</a><ul>
+<li><a class="reference internal" href="#core-authentication">Core Authentication</a><ul>
+<li><a class="reference internal" href="#src.core.auth.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li><a class="reference internal" href="#src.core.auth.get_password_hash"><code class="docutils literal notranslate"><span class="pre">get_password_hash()</span></code></a></li>
+<li><a class="reference internal" href="#src.core.auth.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+<li><a class="reference internal" href="#src.core.auth.verify_token"><code class="docutils literal notranslate"><span class="pre">verify_token()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-crud-operations">User CRUD Operations</a><ul>
+<li><a class="reference internal" href="#src.crud.user.authenticate_user"><code class="docutils literal notranslate"><span class="pre">authenticate_user()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.user.create_user"><code class="docutils literal notranslate"><span class="pre">create_user()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.user.get_user_by_email"><code class="docutils literal notranslate"><span class="pre">get_user_by_email()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.user.get_user_by_id"><code class="docutils literal notranslate"><span class="pre">get_user_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.user.update_user_avatar"><code class="docutils literal notranslate"><span class="pre">update_user_avatar()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.user.verify_user_email"><code class="docutils literal notranslate"><span class="pre">verify_user_email()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contact-crud-operations">Contact CRUD Operations</a><ul>
+<li><a class="reference internal" href="#src.crud.contact.create_contact"><code class="docutils literal notranslate"><span class="pre">create_contact()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.delete_contact"><code class="docutils literal notranslate"><span class="pre">delete_contact()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.get_contact_by_email_and_user"><code class="docutils literal notranslate"><span class="pre">get_contact_by_email_and_user()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.get_user_contact"><code class="docutils literal notranslate"><span class="pre">get_user_contact()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.get_user_contacts"><code class="docutils literal notranslate"><span class="pre">get_user_contacts()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.get_user_upcoming_birthdays"><code class="docutils literal notranslate"><span class="pre">get_user_upcoming_birthdays()</span></code></a></li>
+<li><a class="reference internal" href="#src.crud.contact.update_contact"><code class="docutils literal notranslate"><span class="pre">update_contact()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Contacts API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contacts API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contacts-api-documentation">
+<h1>Contacts API Documentation<a class="headerlink" href="#contacts-api-documentation" title="Permalink to this heading"></a></h1>
+<section id="core-authentication">
+<h2>Core Authentication<a class="headerlink" href="#core-authentication" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-src.core.auth"></span><dl class="py function">
+<dt class="sig sig-object py" id="src.core.auth.create_access_token">
+<span class="sig-prename descclassname"><span class="pre">src.core.auth.</span></span><span class="sig-name descname"><span class="pre">create_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/src/core/auth.html#create_access_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.core.auth.create_access_token" title="Permalink to this definition"></a></dt>
+<dd><p>Create JWT access token with expiration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.core.auth.get_password_hash">
+<span class="sig-prename descclassname"><span class="pre">src.core.auth.</span></span><span class="sig-name descname"><span class="pre">get_password_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/src/core/auth.html#get_password_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.core.auth.get_password_hash" title="Permalink to this definition"></a></dt>
+<dd><p>Generate hash for plain text password.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.core.auth.verify_password">
+<span class="sig-prename descclassname"><span class="pre">src.core.auth.</span></span><span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/core/auth.html#verify_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.core.auth.verify_password" title="Permalink to this definition"></a></dt>
+<dd><p>Verify plain password against hashed password.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.core.auth.verify_token">
+<span class="sig-prename descclassname"><span class="pre">src.core.auth.</span></span><span class="sig-name descname"><span class="pre">verify_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/src/core/auth.html#verify_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.core.auth.verify_token" title="Permalink to this definition"></a></dt>
+<dd><p>Verify JWT token and return email from payload.</p>
+</dd></dl>
+
+</section>
+<section id="user-crud-operations">
+<h2>User CRUD Operations<a class="headerlink" href="#user-crud-operations" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-src.crud.user"></span><dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.authenticate_user">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">authenticate_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#authenticate_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.authenticate_user" title="Permalink to this definition"></a></dt>
+<dd><p>Authenticate user with email and password.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.create_user">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserCreate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.create_user" title="Permalink to this definition"></a></dt>
+<dd><p>Create new user with hashed password.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.get_user_by_email">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">get_user_by_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#get_user_by_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.get_user_by_email" title="Permalink to this definition"></a></dt>
+<dd><p>Get user by email address.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.get_user_by_id">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">get_user_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#get_user_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.get_user_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Get user by ID.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.update_user_avatar">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">update_user_avatar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#update_user_avatar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.update_user_avatar" title="Permalink to this definition"></a></dt>
+<dd><p>Update user avatar URL.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.user.verify_user_email">
+<span class="sig-prename descclassname"><span class="pre">src.crud.user.</span></span><span class="sig-name descname"><span class="pre">verify_user_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/crud/user.html#verify_user_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.user.verify_user_email" title="Permalink to this definition"></a></dt>
+<dd><p>Mark user email as verified.</p>
+</dd></dl>
+
+</section>
+<section id="contact-crud-operations">
+<h2>Contact CRUD Operations<a class="headerlink" href="#contact-crud-operations" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-src.crud.contact"></span><dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.create_contact">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">create_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ContactCreate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Contact</span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#create_contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.create_contact" title="Permalink to this definition"></a></dt>
+<dd><p>Створити новий контакт для користувача</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.delete_contact">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">delete_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#delete_contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.delete_contact" title="Permalink to this definition"></a></dt>
+<dd><p>Видалити контакт користувача</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.get_contact_by_email_and_user">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">get_contact_by_email_and_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Contact</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#get_contact_by_email_and_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.get_contact_by_email_and_user" title="Permalink to this definition"></a></dt>
+<dd><p>Отримати контакт користувача за email</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.get_user_contact">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">get_user_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Contact</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#get_user_contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.get_user_contact" title="Permalink to this definition"></a></dt>
+<dd><p>Отримати контакт користувача за ID</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.get_user_contacts">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">get_user_contacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Contact</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#get_user_contacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.get_user_contacts" title="Permalink to this definition"></a></dt>
+<dd><p>Отримати список контактів користувача з фільтрацією</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.get_user_upcoming_birthdays">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">get_user_upcoming_birthdays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Contact</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#get_user_upcoming_birthdays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.get_user_upcoming_birthdays" title="Permalink to this definition"></a></dt>
+<dd><p>Отримати контакти користувача з днями народження на найближчі 7 днів</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.crud.contact.update_contact">
+<span class="sig-prename descclassname"><span class="pre">src.crud.contact.</span></span><span class="sig-name descname"><span class="pre">update_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sqlalchemy.orm.Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ContactUpdate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Contact</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/crud/contact.html#update_contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.crud.contact.update_contact" title="Permalink to this definition"></a></dt>
+<dd><p>Оновити контакт користувача</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Your Name.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
